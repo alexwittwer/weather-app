@@ -1,0 +1,40 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./src/bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: grid;
+}
+
+.search-bar {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  gap: 8px;
+  padding: 1rem;
+  background-color: rgba(231, 231, 231, 0.63);
+}
+
+.search-bar input,
+.search-bar button {
+}
+
+.search-bar input {
+  border-radius: 10px;
+  padding: 8px 12px;
+  width: 250px;
+}
+
+.search-bar button {
+  padding: 8px;
+  border-radius: 3px;
+}
