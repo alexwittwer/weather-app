@@ -1,6 +1,8 @@
 import "./style.css";
 import getData from "./src/api";
+import buildDom from "./src/domhandler";
 
-const data = await getData("Philadelphia");
+const dframe = {};
+dframe.data = await getData("Philadelphia");
 
-console.log(data);
+buildDom(dframe);
