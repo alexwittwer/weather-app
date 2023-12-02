@@ -1,8 +1,4 @@
 import "./style.css";
-import getData from "./src/api";
-import buildDom from "./src/domhandler";
+import renderApp from "./src/app";
 
-const dframe = {};
-dframe.data = await getData("Philadelphia");
-
-buildDom(dframe);
+renderApp();
