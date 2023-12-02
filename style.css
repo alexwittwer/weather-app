@@ -10,7 +10,12 @@
   --c2: #7bc7dd;
   --c3: #62a0c79a;
   --c4: #6392b691;
-  --c5: #29769ce7;
+  --c5: rgba(70, 117, 141, 0.575);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--c1);
+  height: 0.4rem;
 }
 
 #app {
@@ -90,8 +95,13 @@
   font-size: 1.6rem;
   min-width: 40%;
   box-sizing: border-box;
-  background-color: var(c3);
-  color: black;
+  background-color: var(--c5);
+  color: white;
+  border: none;
+}
+
+.search-bar input:focus-visible {
+  outline: auto rgba(255, 255, 255, 0.274);
 }
 
 .search-bar button {
@@ -137,5 +147,109 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen AND (max-width: 480px) {
+  #app {
+    width: 100vw;
+    height: 100vh;
+    grid-template-rows: 10% 90%;
+  }
+
+  .container {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 100%;
+    font-size: 12px;
+    margin: 8px;
+  }
+
+  .region > div {
+    font-size: 2rem;
+  }
+
+  .location {
+    padding: 12px;
+    gap: 1rem;
+  }
+
+  .location > div {
+    background-color: var(--c5);
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .forecast {
+    background-color: var(--c5);
+    max-width: 90%;
+    overflow-x: auto;
+  }
+
+  .search-bar input {
+    flex: 1;
+    font-size: 1.6rem;
+    width: 12ch;
+  }
+
+  /* spinner from https://loading.io/css/ */
+
+  .lds-dual-ring {
+    display: inline-block;
+    margin: 25% auto;
+    width: 40px;
+    height: 40px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 4px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+}
+
+@media screen AND (max-width: 350px) {
+  #app {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .container {
+    font-size: 12px;
+    margin: 8px;
+  }
+
+  .region > div {
+    font-size: 2rem;
+  }
+
+  .location {
+    padding: 4px;
+    gap: 1rem;
+  }
+
+  .location > div {
+    padding: 8px;
+    font-size: 18px;
+  }
+
+  .forecast {
+    max-width: 90%;
+    overflow-x: auto;
+    padding: 8px;
+  }
+
+  .search-bar input {
+    flex: 1;
+    font-size: 1.6rem;
+    width: 8ch;
+    box-sizing: border-box;
+    background-color: var(--c4);
+    color: white;
+    border: none;
   }
 }

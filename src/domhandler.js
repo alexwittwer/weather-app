@@ -114,13 +114,13 @@ function forecast(obj) {
   const container = document.createElement("section");
   container.classList.add("forecast");
   const dayMap = {
-    0: "Mon",
-    1: "Tue",
-    2: "Wed",
-    3: "Thur",
-    4: "Fri",
-    5: "Sat",
-    6: "Sun",
+    0: "Sun",
+    1: "Mon",
+    2: "Tue",
+    3: "Wed",
+    4: "Thu",
+    5: "Fri",
+    6: "Sat",
   };
 
   for (const key in obj.forecast.forecastday) {
@@ -133,7 +133,12 @@ function forecast(obj) {
 
     const date = new Date(obj.forecast.forecastday[key].date);
 
-    day.textContent = dayMap[date.getDay()] + " " + format(date, "MM/dd");
+    day.textContent =
+      dayMap[date.getUTCDay()] +
+      " " +
+      (date.getUTCMonth() + 1) +
+      "/" +
+      date.getUTCDate();
     icon.src = obj.forecast.forecastday[key].day.condition.icon;
     icon.alt = obj.forecast.forecastday[key].day.condition.text;
     icon.title = obj.forecast.forecastday[key].day.condition.text;
