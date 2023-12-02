@@ -45,15 +45,6 @@ function spinner() {
   ct.append(spinner);
 }
 
-function weatherContainer(obj) {
-  const container = document.createElement("section");
-  container.classList.add("container");
-
-  container.append(region(obj), location(obj), hourly(obj), forecast(obj));
-
-  return container;
-}
-
 function location(obj) {
   const container = document.createElement("section");
   const today = document.createElement("div");
@@ -108,14 +99,89 @@ function region(obj) {
 
 function hourly(obj) {
   const container = document.createElement("section");
-  container.classList.add("hourly");
+  const switcherButton = document.createElement("button");
+  switcherButton.classList.add("switch-hours-days");
+  container.classList.add("forecast");
+
+  const hourMap = {
+    0: "12 AM",
+    1: "1 AM",
+    2: "2 AM",
+    3: "3 AM",
+    4: "4 AM",
+    5: "5 AM",
+    6: "6 AM",
+    7: "7 AM",
+    8: "8 AM",
+    9: "9 AM",
+    10: "10 AM",
+    11: "11 AM",
+    12: "12 PM",
+    13: "1 PM",
+    14: "2 PM",
+    15: "3 PM",
+    16: "4 PM",
+    17: "5 PM",
+    18: "6 PM",
+    19: "7 PM",
+    20: "8 PM",
+    21: "9 PM",
+    22: "10 PM",
+    23: "11 PM",
+  };
+
+  switcherButton.textContent = "hourly";
+  switcherButton.addEventListener("click", (e) => {
+    clearDOM();
+    if (!document.querySelector(".search-bar")) {
+      ct.append(searchBar(obj));
+    }
+    ct.append(weatherContainerDaily(obj));
+  });
+
+  container.append(switcherButton);
+
+  for (const key in obj.forecast.forecastday[0].hour) {
+    const hour = document.createElement("p");
+    const temp = document.createElement("div");
+    const icon = document.createElement("img");
+    const card = document.createElement("div");
+    card.classList.add("forecast-card");
+    hour.classList.add("hour");
+
+    const hourRes = new Date(
+      obj.forecast.forecastday[0].hour[key].time
+    ).getHours();
+
+    icon.src = obj.forecast.forecastday[0].hour[key].condition.icon;
+    icon.alt = obj.forecast.forecastday[0].hour[key].condition.text;
+    icon.title = obj.forecast.forecastday[0].hour[key].condition.text;
+    temp.textContent = obj.forecast.forecastday[0].hour[key].temp_f + "F";
+    hour.textContent = hourMap[hourRes];
+
+    card.append(hour, icon, temp);
+    container.append(card);
+  }
 
   return container;
 }
 
 function forecast(obj) {
+  const switcherButton = document.createElement("button");
+  switcherButton.classList.add("switch-hours-days");
   const container = document.createElement("section");
   container.classList.add("forecast");
+  switcherButton.textContent = "daily";
+  container.append(switcherButton);
+
+  switcherButton.addEventListener("click", (e) => {
+    clearDOM();
+    if (!document.querySelector(".search-bar")) {
+      ct.append(searchBar(obj));
+    }
+    ct.append(weatherContainerHourly(obj));
+  });
+
   const dayMap = {
     0: "Sun",
     1: "Mon",
@@ -161,10 +227,28 @@ function clearDOM() {
   }
 }
 
+function weatherContainerDaily(obj) {
+  const container = document.createElement("section");
+  container.classList.add("container");
+
+  container.append(region(obj), location(obj), forecast(obj));
+
+  return container;
+}
+
+function weatherContainerHourly(obj) {
+  const container = document.createElement("section");
+  container.classList.add("container");
+
+  container.append(region(obj), location(obj), hourly(obj));
+
+  return container;
+}
+
 export default function buildDom(obj) {
   clearDOM();
   if (!document.querySelector(".search-bar")) {
     ct.append(searchBar(obj));
   }
-  ct.append(weatherContainer(obj));
+  ct.append(weatherContainerDaily(obj));
 }

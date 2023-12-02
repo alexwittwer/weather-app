@@ -69,11 +69,20 @@
 }
 
 .location > div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
   background-color: var(--c5);
   padding: 16px;
 }
 
+.location > div > img {
+  width: 5rem;
+}
+
 .forecast {
+  position: relative;
   display: flex;
   justify-content: space-between;
   background-color: var(--c5);
@@ -87,6 +96,10 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+}
+
+.hour {
+  font-size: 18px;
 }
 
 .search-bar input {
@@ -124,6 +137,23 @@
 
 .hidden {
   display: none;
+}
+
+.switch-hours-days {
+  border-style: none;
+  background-color: transparent;
+  color: white;
+  padding: 4px;
+  font-size: 18px;
+  border: 1px solid white;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.switch-hours-days:hover {
+  background-color: var(--c4);
+  transition: 250ms;
 }
 
 /* spinner from https://loading.io/css/ */
