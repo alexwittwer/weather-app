@@ -1,14 +1,16 @@
 import getData from "./api";
 import validate from "./validate";
-import { format } from "date-fns";
 const ct = document.querySelector("#app");
 
 function searchBar(obj) {
   const form = document.createElement("form");
   const input = document.createElement("input");
   const btn = document.createElement("button");
+  const search = document.createElement("img");
 
-  btn.textContent = "search";
+  btn.append(search);
+  search.src = "./src/search.svg";
+  search.width = "25";
   input.type = "search";
   form.classList.add("search-bar");
 
