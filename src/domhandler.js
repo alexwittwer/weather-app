@@ -49,6 +49,8 @@ function location(obj) {
   const container = document.createElement("section");
   const today = document.createElement("div");
   const now = document.createElement("div");
+  now.classList.add("now");
+  today.classList.add("today");
   container.classList.add("location");
 
   const currenttemp = document.createElement("div");
@@ -59,7 +61,10 @@ function location(obj) {
   const todaylow = document.createElement("div");
   const todaydate = document.createElement("div");
   const todayrain = document.createElement("div");
-  const todaysnow = document.createElement("div");
+  const feelslike = document.createElement("div");
+  const humidity = document.createElement("div");
+  const sunrise = document.createElement("div");
+  const sunset = document.createElement("div");
 
   currenttemp.textContent = obj.current.temp_f + "F";
   condition.textContent = obj.current.condition.text;
@@ -77,9 +82,21 @@ function location(obj) {
     "Chance of rain: " +
     obj.forecast.forecastday[0].day.daily_chance_of_rain +
     "%";
+  feelslike.textContent = "Feels like: " + obj.current.feelslike_f + "F";
+  humidity.textContent = "Humidity: " + obj.current.humidity + "%";
+  sunrise.textContent = "Sunrise: " + obj.forecast.forecastday[0].astro.sunrise;
+  sunset.textContent = "Sunrise: " + obj.forecast.forecastday[0].astro.sunset;
 
   now.append(img, currenttemp, condition, wind, today);
-  today.append(todayhigh, todaylow, todayrain);
+  today.append(
+    todayhigh,
+    todaylow,
+    todayrain,
+    feelslike,
+    humidity,
+    sunrise,
+    sunset
+  );
   container.append(now, today);
 
   return container;
