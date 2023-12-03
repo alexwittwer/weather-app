@@ -1,6 +1,8 @@
 # Weatherify
 <a name="readme-top"></a>
 
+Live demo here: https://alexwittwer.github.io/weather-app/
+
 Weatherify is a straightforward weather website that provides real-time weather updates for your location and any other city worldwide.
 
 This project was built alongside "The Odin Project" curriculum, and emphasizes the usage of web APIs to build dynamic applications.
