@@ -65,6 +65,8 @@ function location(obj) {
   const humidity = document.createElement("div");
   const sunrise = document.createElement("div");
   const sunset = document.createElement("div");
+  const title = document.createElement("h4");
+  const moredata = document.createElement("h4");
 
   currenttemp.textContent = obj.current.temp_f + "F";
   condition.textContent = obj.current.condition.text;
@@ -72,6 +74,8 @@ function location(obj) {
   img.src = obj.current.condition.icon;
   img.alt = obj.current.condition.text;
   img.title = obj.current.condition.text;
+  title.textContent = "Current weather";
+  moredata.textContent = "Today";
 
   todayhigh.textContent =
     "High: " + obj.forecast.forecastday[0].day.maxtemp_f + "F";
@@ -87,12 +91,13 @@ function location(obj) {
   sunrise.textContent = "Sunrise: " + obj.forecast.forecastday[0].astro.sunrise;
   sunset.textContent = "Sunrise: " + obj.forecast.forecastday[0].astro.sunset;
 
-  now.append(img, currenttemp, condition, wind, today);
+  now.append(title, img, currenttemp, condition, wind, today);
   today.append(
+    moredata,
     todayhigh,
     todaylow,
-    todayrain,
     feelslike,
+    todayrain,
     humidity,
     sunrise,
     sunset
@@ -105,11 +110,14 @@ function location(obj) {
 function region(obj) {
   const container = document.createElement("section");
   const location = document.createElement("div");
+  const lastupdated = document.createElement("div");
   container.classList.add("region");
+  lastupdated.classList.add("last-updated");
 
   location.textContent = obj.location.name + ", " + obj.location.region;
+  lastupdated.textContent = "last updated: " + obj.current.last_updated;
 
-  container.append(location);
+  container.append(location, lastupdated);
 
   return container;
 }
@@ -163,8 +171,11 @@ function hourly(obj) {
     const temp = document.createElement("div");
     const icon = document.createElement("img");
     const card = document.createElement("div");
+    const condition = document.createElement("div");
     card.classList.add("forecast-card");
     hour.classList.add("hour");
+
+    condition.style.textAlign = "center";
 
     const hourRes = new Date(
       obj.forecast.forecastday[0].hour[key].time
@@ -173,10 +184,12 @@ function hourly(obj) {
     icon.src = obj.forecast.forecastday[0].hour[key].condition.icon;
     icon.alt = obj.forecast.forecastday[0].hour[key].condition.text;
     icon.title = obj.forecast.forecastday[0].hour[key].condition.text;
+    condition.textContent =
+      obj.forecast.forecastday[0].hour[key].condition.text;
     temp.textContent = obj.forecast.forecastday[0].hour[key].temp_f + "F";
     hour.textContent = hourMap[hourRes];
 
-    card.append(hour, icon, temp);
+    card.append(hour, icon, temp, condition);
     container.append(card);
   }
 

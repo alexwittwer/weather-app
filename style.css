@@ -59,13 +59,21 @@
 
 .region {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
+  height: 100%;
 }
 
 .region > div {
   font-size: 48px;
-  padding: 16px;
+  font-weight: 600;
+}
+
+.region > .last-updated {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .location {
@@ -83,6 +91,11 @@
   padding: 16px;
 }
 
+.location > div:hover {
+  background-color: rgba(70, 117, 141, 0.9);
+  transition: 250ms;
+}
+
 .location > div > img {
   width: 5rem;
 }
@@ -98,16 +111,24 @@
   justify-content: space-between;
   background-color: var(--c5);
   padding: 36px;
-  gap: 36px;
+  gap: 12px;
   overflow-x: auto;
 }
 
+.forecast:hover {
+  background-color: rgba(70, 117, 141, 0.9);
+  transition: 250ms;
+}
+
 .forecast-card {
+  min-width: 10ch;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   font-size: 18px;
+  gap: 4px;
+  text-align: center;
 }
 
 .hour {
@@ -207,8 +228,17 @@
     margin: 8px;
   }
 
+  .region {
+    align-items: flex-start;
+  }
+
   .region > div {
-    font-size: 2rem;
+    font-size: 30px;
+  }
+
+  .last-updated {
+    padding-left: 8px;
+    font-size: 12px;
   }
 
   .location {
@@ -267,8 +297,14 @@
     gap: 50px;
   }
 
-  .region > div {
-    font-size: 2rem;
+  .region {
+    font-size: 26px;
+    align-items: flex-start;
+  }
+
+  .last-updated {
+    padding-left: 8px;
+    font-size: 10px;
   }
 
   .location {
