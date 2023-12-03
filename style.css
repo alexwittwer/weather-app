@@ -110,7 +110,7 @@
   display: flex;
   justify-content: space-between;
   background-color: var(--c5);
-  padding: 36px;
+  padding-left: 40px;
   gap: 12px;
   overflow-x: auto;
 }
@@ -177,11 +177,11 @@
   background-color: transparent;
   color: white;
   padding: 4px;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid white;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
 }
 
 .switch-hours-days:hover {

@@ -83,9 +83,7 @@ function location(obj) {
     "Low: " + obj.forecast.forecastday[0].day.mintemp_f + "F";
   todaydate.textContent = obj.forecast.forecastday[0].date;
   todayrain.textContent =
-    "Chance of rain: " +
-    obj.forecast.forecastday[0].day.daily_chance_of_rain +
-    "%";
+    "Rain: " + obj.forecast.forecastday[0].day.daily_chance_of_rain + "%";
   feelslike.textContent = "Feels like: " + obj.current.feelslike_f + "F";
   humidity.textContent = "Humidity: " + obj.current.humidity + "%";
   sunrise.textContent = "Sunrise: " + obj.forecast.forecastday[0].astro.sunrise;

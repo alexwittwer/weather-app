@@ -8,7 +8,7 @@ export default async function getData(location = "Philadelphia") {
       `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=${FORECAST_DAYS}&q=${location}&aqi=yes`,
       { mode: "cors" }
     );
-    const response = await call.json();
+    const response = call.json();
 
     return response;
   } catch (err) {
