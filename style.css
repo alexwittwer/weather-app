@@ -26,28 +26,25 @@
   background-attachment: fixed;
   background-size: cover;
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 10% 80%;
 }
 
 .search-bar {
   display: flex;
   justify-self: center;
-  justify-content: center;
   align-items: center;
-  height: 2rem;
-  gap: 8px;
-  padding: 1rem;
-  margin: 16px;
 }
 
 .container {
+  box-sizing: border-box;
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 100%;
-  margin: 36px;
+  margin: 24px;
   font-size: 24px;
+  gap: 18px;
 }
 
 .region {
@@ -65,7 +62,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .location > div {
@@ -96,6 +93,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
 }
 
 .hour {
@@ -188,12 +186,9 @@
   #app {
     width: 100vw;
     height: 100vh;
-    grid-template-rows: 10% 90%;
   }
 
   .container {
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 100%;
     font-size: 12px;
     margin: 8px;
   }
@@ -203,6 +198,7 @@
   }
 
   .location {
+    justify-content: flex-start;
     padding: 12px;
     gap: 1rem;
   }
@@ -215,7 +211,6 @@
 
   .forecast {
     background-color: var(--c5);
-    max-width: 90%;
     overflow-x: auto;
   }
 
@@ -246,7 +241,7 @@
   }
 }
 
-@media screen AND (max-width: 350px) {
+@media screen AND (max-width: 370px) {
   #app {
     width: 100vw;
     height: 100vh;
@@ -254,7 +249,8 @@
 
   .container {
     font-size: 12px;
-    margin: 8px;
+    margin-inline: 12px;
+    gap: 8px;
   }
 
   .region > div {
@@ -264,26 +260,23 @@
   .location {
     padding: 4px;
     gap: 1rem;
+    justify-content: stretch;
   }
 
   .location > div {
+    justify-content: stretch;
     padding: 8px;
     font-size: 18px;
   }
 
   .forecast {
-    max-width: 90%;
     overflow-x: auto;
     padding: 8px;
+    gap: 8px;
+    padding-top: 24px;
   }
 
-  .search-bar input {
-    flex: 1;
-    font-size: 1.6rem;
-    width: 8ch;
-    box-sizing: border-box;
-    background-color: var(--c4);
-    color: white;
-    border: none;
+  .forecast-card {
+    padding: 10px;
   }
 }
