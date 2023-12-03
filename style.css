@@ -13,9 +13,19 @@
   --c5: rgba(70, 117, 141, 0.575);
 }
 
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 1px;
+}
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--c1);
-  height: 0.4rem;
+  background: var(--c1);
+  border-radius: 1px;
 }
 
 #app {

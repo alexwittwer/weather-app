@@ -3,7 +3,7 @@ import validate from "./validate";
 import Icon from "./search.svg";
 const ct = document.querySelector("#app");
 
-function searchBar(obj) {
+function searchBar() {
   const form = document.createElement("form");
   const input = document.createElement("input");
   const btn = document.createElement("button");
@@ -134,7 +134,7 @@ function hourly(obj) {
   switcherButton.addEventListener("click", (e) => {
     clearDOM();
     if (!document.querySelector(".search-bar")) {
-      ct.append(searchBar(obj));
+      ct.append(searchBar());
     }
     ct.append(weatherContainerDaily(obj));
   });
@@ -177,7 +177,7 @@ function forecast(obj) {
   switcherButton.addEventListener("click", (e) => {
     clearDOM();
     if (!document.querySelector(".search-bar")) {
-      ct.append(searchBar(obj));
+      ct.append(searchBar());
     }
     ct.append(weatherContainerHourly(obj));
   });
@@ -248,7 +248,7 @@ function weatherContainerHourly(obj) {
 export default function buildDom(obj) {
   clearDOM();
   if (!document.querySelector(".search-bar")) {
-    ct.append(searchBar(obj));
+    ct.append(searchBar());
   }
   ct.append(weatherContainerDaily(obj));
 }
