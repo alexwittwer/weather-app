@@ -1,6 +1,6 @@
 // key
 const API_KEY = "8ca0b68856a045d8b65212932232911";
-const FORECAST_DAYS = 14;
+const FORECAST_DAYS = 7;
 
 export default async function getData(location = "Philadelphia") {
   try {

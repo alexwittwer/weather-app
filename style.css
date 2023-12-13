@@ -244,7 +244,7 @@
   }
 
   .location {
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 12px;
     gap: 1rem;
   }
@@ -312,7 +312,6 @@
   .location {
     padding: 4px;
     gap: 1rem;
-    justify-content: stretch;
   }
 
   .location > div {
